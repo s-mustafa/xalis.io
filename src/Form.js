@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 const INITIAL_STATE = {
   desc: '',
   amount: '',
-  date: '',
+  date: ''
 }
 
 const Form = ({ onAdd }) => {

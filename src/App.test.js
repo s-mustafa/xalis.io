@@ -5,13 +5,13 @@ import App from './App'
 test('renders learn react link', () => {
   const { container } = render(<App />)
   fireEvent.change(screen.getByTestId('description'), {
-    target: { value: 'Chaussure' },
+    target: { value: 'Chaussure' }
   })
   fireEvent.change(screen.getByTestId('amount'), {
-    target: { value: '1000' },
+    target: { value: '1000' }
   })
   fireEvent.change(screen.getByTestId('date'), {
-    target: { value: '2020-02-03' },
+    target: { value: '2020-02-03' }
   })
 
   fireEvent.click(screen.getByTestId('submit-button'))
@@ -23,13 +23,13 @@ test('renders learn react link', () => {
   expect(screen.getByTestId('balance')).toHaveTextContent('1,000 FCFA')
 
   fireEvent.change(screen.getByTestId('description'), {
-    target: { value: 't-shirt' },
+    target: { value: 't-shirt' }
   })
   fireEvent.change(screen.getByTestId('amount'), {
-    target: { value: '500' },
+    target: { value: '500' }
   })
   fireEvent.change(screen.getByTestId('date'), {
-    target: { value: '2020-02-08' },
+    target: { value: '2020-02-08' }
   })
 
   fireEvent.click(screen.getByTestId('submit-button'))
