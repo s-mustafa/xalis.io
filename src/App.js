@@ -29,7 +29,10 @@ const App = () => {
         <p className="text-3xl" data-testid="balance">
           {formatAmount(
             transactions.reduce(
-              (sum, transaction) => sum + parseInt(transaction.amount),
+              (sum, transaction) =>
+                sum +
+                parseInt(transaction.amount) *
+                  (transaction.type === 'debit' ? -1 : 1),
               0
             )
           )}
@@ -46,7 +49,33 @@ const App = () => {
             <div
               key={i}
               className="py-2 px-8 flex justify-between bg-white even:bg-gray-300">
-              <div className="sm:flex">
+              {transaction.type === 'debit' ? (
+                <svg
+                  className="fill-current text-blue-400 self-center mr-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24">
+                  <path
+                    className="heroicon-ui"
+                    d="M13 5.41V17a1 1 0 0 1-2 0V5.41l-3.3 3.3a1 1 0 0 1-1.4-1.42l5-5a1 1 0 0 1 1.4 0l5 5a1 1 0 1 1-1.4 1.42L13 5.4zM3 17a1 1 0 0 1 2 0v3h14v-3a1 1 0 0 1 2 0v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3z"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  className="fill-current text-green-400 self-center mr-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24">
+                  <path
+                    className="heroicon-ui"
+                    d="M11 14.59V3a1 1 0 0 1 2 0v11.59l3.3-3.3a1 1 0 0 1 1.4 1.42l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 0 1 1.4-1.42l3.3 3.3zM3 17a1 1 0 0 1 2 0v3h14v-3a1 1 0 0 1 2 0v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3z"
+                  />
+                </svg>
+              )}
+
+              <div className="sm:flex flex-grow">
                 <div className="sm:w-32">
                   <p>{transaction.desc}</p>
                   <p>{transaction.date}</p>
