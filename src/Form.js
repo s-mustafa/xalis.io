@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   desc: '',
   amount: '',
   date: '',
-  type: null
+  type: 'credit'
 }
 
 const Form = ({ onAdd }) => {
